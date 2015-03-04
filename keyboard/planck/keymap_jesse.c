@@ -1,5 +1,5 @@
 // Author: Jesse Haubrich <jesse.haubrich@gmail.com>
-// http://www.keyboard-layout-editor.com/#/layouts/9760d617fd9bc9ac7aba26f3f7c5bc7e
+// http://www.keyboard-layout-editor.com/#/layouts/cc520d7ba6e0afe128eedf0ef624acec
 
 #include "keymap_common.h"
 
@@ -56,15 +56,15 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |-----------------------------------------------------------------------|
 * |     |  `  |  =  |  -  |  +  |  /  |  *  |  4  |  5  |  6  |  +  |  -  |
 * |-----------------------------------------------------------------------|
-* |     |     |     |  _  |     |     |  /  |  1  |  2  |  3  | ent |
+* |     |     |     |  _  |     |     |  /  |  1  |  2  |  3  | ent |     |
 * |-----------------------------------------------------------------------|
 * |     |     |     |     |     |     |     |  0  |  ,  |  .  | ent |     |
 * `-----------------------------------------------------------------------'
 */
     TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    TRNS,
     TRNS, GRV,  EQL,  MINS, FN22, SLSH, FN18, 4,    5,    6,    FN22, MINS,
-    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, SLSH, 1,    2,    3,    ENT,  TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, 0,    COMM, DOT,  ENT,  TRNS),
+    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, SLSH, 1,    2,    3,    ENT,  Y,
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, 0,    COMM, DOT,  ENT,  N),
 
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
     ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, TRNS, PGUP, TRNS, TRNS, DEL,
@@ -85,14 +85,14 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |-----------------------------------------------------------------------|
 * |     | F11 | F12 | F13 | F14 | F15 | F16 | F17 | F18 | F19 | F20 |     |
 * |-----------------------------------------------------------------------|
-* |     | F21 | F22 | F23 | F24 |     |     |     |     |     |     |     |
+* |     | F21 | F22 | F23 | F24 |     |     |print|     |     |     |     |
 * |-----------------------------------------------------------------------|
 * |     |     |     |     |     |     |     |     |     |     |     |     |
 * `-----------------------------------------------------------------------'
 */
     TRNS, F1,   F2,   F3,   F4,   F5,   F6,   F7,   F8,   F9,   F10,  TRNS,
     TRNS, F11,  F12,  F13,  F14,  F15,  F16,  F17,  F18,  F19,  F20,  TRNS,
-    TRNS, F21,  F22,  F23,  F24,  TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,
+    TRNS, F21,  F22,  F23,  F24,  TRNS, TRNS, PSCR, TRNS, TRNS, TRNS, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
 
   };
