@@ -19,11 +19,12 @@
 * |     | undo| cut | copy|paste|     |     | PgDn |    |     | F11 |     |
 * |-----------------------------------------------------------------------|
 * | COL |qwrty|     |     |     |     |     |     |     |     |     |     |
-* |NmPAD|Fkeys|  ^  | alt | Low | ENT | SPC | Rai | mute| VolU| VOLD| GUI |
+* |NmPAD|Fkeys|  ^  | alt | Low | ENT | SPC | Rai | mute| VolU| VolD| GUI |
 * |     |     |     |     |     |     |  _  |     | mute| VolU| VolD|     |
 * `-----------------------------------------------------------------------'
 */
-#define KEYMAP_GRID( \
+
+#define KEYMAP_GRID(				       			\
        K00,  K01,  K02,  K03,  K04,  K05,  K06,  K07,  K08,  K09,  K0A,  K0B, \
        K10,  K11,  K12,  K13,  K14,  K15,  K16,  K17,  K18,  K19,  K1A,  K1B, \
        K20,  K21,  K22,  K23,  K24,  K25,  K26,  K27,  K28,  K29,  K2A,  K2B, \
@@ -42,29 +43,29 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
     LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
     LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
-    FN5,  FN6,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  MUTE, VOLD, VOLU, LGUI),
-
+    FN1,  FN6,  LCTL, LALT, FN2,  ENT,  SPC,  FN5,  FN1, VOLD, VOLU, LGUI),
+  
   [1] = KEYMAP_GRID( /* Base QWERTY */
     TRNS, Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    TRNS,
     TRNS, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     TRNS, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
 
-  [2] = KEYMAP_GRID( /* NUM pad
+  [2] = KEYMAP_GRID( /* NUM pad    
 * ,-----------------------------------------------------------------------.
-* |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  | del |
+* |  ~  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  | del |
 * |-----------------------------------------------------------------------|
 * |     |  `  |  =  |  -  |  +  |  /  |  *  |  4  |  5  |  6  |  +  |  -  |
 * |-----------------------------------------------------------------------|
 * |     |     |     |  _  |     |     |  /  |  1  |  2  |  3  | ent |     |
 * |-----------------------------------------------------------------------|
-* |     |     |     |     |     |     |     |  0  |  ,  |  .  | ent |     |
+* |     |     |     |     |     |     |     |     |  0  |  .  | ent |     |
 * `-----------------------------------------------------------------------'
 */
     TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    TRNS,
-    TRNS, GRV,  EQL,  MINS, FN22, SLSH, FN18, 4,    5,    6,    FN22, MINS,
-    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, SLSH, 1,    2,    3,    ENT,  Y,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, 0,    COMM, DOT,  ENT,  N),
+    TRNS, GRV,  EQL,  MINS, FN22, SLSH, FN18, 4,    5,    6,    FN22, FN26,
+    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, SLSH, 1,    2,    3,    ENT,  TRNS,
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, 0,    DOT,  ENT,  TRNS),
 
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
     ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, TRNS, PGUP, TRNS, TRNS, DEL,
@@ -76,7 +77,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     FN23, FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
     TRNS, GRV,  EQL,  MINS, FN22, TRNS, TRNS, LBRC, RBRC, FN24, FN25, FN26,
     TRNS, TRNS, TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, BSLS, TRNS,
-    FN3,  FN4,  TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
 
 
   [5] = KEYMAP_GRID( /* FKeys
