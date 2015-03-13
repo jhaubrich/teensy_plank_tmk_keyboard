@@ -1,26 +1,26 @@
 // Author: Jesse Haubrich <jesse.haubrich@gmail.com>
-// http://www.keyboard-layout-editor.com/#/layouts/cc520d7ba6e0afe128eedf0ef624acec
+// http://www.keyboard-layout-editor.com/#/layouts/5a5cf55c1fb2fd767ffcb39f70fbb17f
 
 #include "keymap_common.h"
 
 #ifndef KEYMAP_GRID
 /* Planck keymap definition macro for the 'grid' layout
 * ,-----------------------------------------------------------------------.
-* |  ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |     |
+* |  `  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |     |
 * | TAB |  Q  |  W  |  F  |  P  |  G  |  J  |  L  |  U  |  Y  |  ;  | DEL |
-* | ESC | quit|close|find |     |     |     |     |PgUp |     |     | fDEL|
+* | ESC | quit|close|find |     |     |     |     |PgUp |  [  |  ]  |fDEL |
 * |-----------------------------------------------------------------------|
-* |     |  `  |  =  |  -  |  +  |     |     |  [  |  ]  |  {  |  }  |  |  |
+* |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
 * |  ^  |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  |  "  |
 * |     | sel |     | save|     |     | Lf  | Dn  | Up  | Rt  | home| end |
 * |-----------------------------------------------------------------------|
-* |     |     |     |  _  |     |     |     |     |     |     |  \  |     |
+* |     |  \  |  =  |  -  |  +  |  ~  | SPC |  _  |     |     |     |     |
 * |shift|  Z  |  X  |  C  |  V  |  B  |  K  |  M  |  ,  |  .  |  /  |Shift|
-* |     | undo| cut | copy|paste|     |     | PgDn |    |     | F11 |     |
+* |     | undo| cut | copy|paste|     |     |PgDn |     |  {  |  }  |     |
 * |-----------------------------------------------------------------------|
-* | COL |qwrty|     |     |     |     |     |     |     |     |     |     |
-* |NmPAD|Fkeys|  ^  | alt | Low | ENT | SPC | Rai | mute| VolU| VolD| GUI |
-* |     |     |     |     |     |     |  _  |     | mute| VolU| VolD|     |
+* |     |     |     |     |     |     |     |     |     | mute| VolU| VolD|
+* |     |Fkeys|  ^  | alt | Low | ENT | SPC | Rai |     |     |qwrty| GUI |
+* |     |     |     |     |     |     |  _  |     |     | mute| VolU| VolD|
 * `-----------------------------------------------------------------------'
 */
 
@@ -43,37 +43,37 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
     LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
     LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
-    FN1,  FN6,  LCTL, LALT, FN2,  ENT,  SPC,  FN5,  FN1, VOLD, VOLU, LGUI),
-  
+    TRNS, FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  MINS, FN22, FN3,  LGUI),
+
   [1] = KEYMAP_GRID( /* Base QWERTY */
     TRNS, Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    TRNS,
     TRNS, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     TRNS, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
 
-  [2] = KEYMAP_GRID( /* NUM pad    
-* ,-----------------------------------------------------------------------.
-* |  ~  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  | del |
-* |-----------------------------------------------------------------------|
-* |     |  `  |  =  |  -  |  +  |  /  |  *  |  4  |  5  |  6  |  +  |  -  |
-* |-----------------------------------------------------------------------|
-* |     |     |     |  _  |     |     |  /  |  1  |  2  |  3  | ent |     |
-* |-----------------------------------------------------------------------|
-* |     |     |     |     |     |     |     |     |  0  |  .  | ent |     |
-* `-----------------------------------------------------------------------'
-*/
-    TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    TRNS,
-    TRNS, GRV,  EQL,  MINS, FN22, SLSH, FN18, 4,    5,    6,    FN22, FN26,
-    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, SLSH, 1,    2,    3,    ENT,  TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, 0,    DOT,  ENT,  TRNS),
-
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
-    ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, TRNS, PGUP, TRNS, TRNS, DEL,
+    ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, TRNS, PGUP, LBRC, RBRC, DEL,
     TRNS, FN10, TRNS, TRNS, TRNS, TRNS, LEFT, DOWN, UP,   RGHT, HOME, END,
-    TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, TRNS, F11,  TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN21, TRNS, MUTE, VOLD, VOLU, TRNS),
+    TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, FN24, FN25, TRNS,
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN21, TRNS, TRNS, MUTE, VOLD, VOLU),
 
-  [4] = KEYMAP_GRID( /* Raise / Symbol Layer*/
+  [4] = KEYMAP_GRID( /* Raise / Number-sym layer
+  * ,-----------------------------------------------------------------------.
+  * |  `  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  | del |
+  * |-----------------------------------------------------------------------|
+  * |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
+  * |-----------------------------------------------------------------------|
+  * |     |  \  |  =  |  -  |  +  |  ~  | SPC |  _  |     |     |     |     |
+  * |-----------------------------------------------------------------------|
+  * |     |     |     |     |     |     |     |     |     |     |     |     |
+  * `-----------------------------------------------------------------------'
+  */
+    GRV,  FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
+    TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    FN26,
+    TRNS, BSLS, EQL,  MINS, FN22, FN23, SPC,  FN21, TRNS, TRNS, TRNS, TRNS,
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, MUTE, VOLD, VOLU),
+
+  [9] = KEYMAP_GRID( /* Symbol Layer - Depricated */
     FN23, FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
     TRNS, GRV,  EQL,  MINS, FN22, TRNS, TRNS, LBRC, RBRC, FN24, FN25, FN26,
     TRNS, TRNS, TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, BSLS, TRNS,
@@ -99,13 +99,11 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   };
 
 const uint16_t PROGMEM fn_actions[] = {
-   [1] = ACTION_LAYER_MOMENTARY(4), // Raise
+   [1] = ACTION_LAYER_TAP_TOGGLE(4), // Raise
    [2] = ACTION_LAYER_MOMENTARY(3), // Lower
-   [6] = ACTION_LAYER_MOMENTARY(5), // F-keys
 
-   [3] = ACTION_DEFAULT_LAYER_SET(1),  // Colemak
-   [4] = ACTION_DEFAULT_LAYER_SET(0),  // QWERTY
-   [5] = ACTION_LAYER_TAP_TOGGLE(2),  // NUM PAD
+   [3] = ACTION_LAYER_TAP_TOGGLE(1),  // QWERTY
+   [5] = ACTION_LAYER_MOMENTARY(5), // F-keys
 
   [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
   [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
