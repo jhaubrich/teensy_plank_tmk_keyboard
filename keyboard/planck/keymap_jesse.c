@@ -39,20 +39,32 @@
 
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [0] = KEYMAP_GRID( /* Base Colemak */
+  [0] = KEYMAP_GRID( /* Base QWERTY */
+    TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
+    LCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
+    LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
+    ESC,  FN5,  LCTL, LALT, FN2,  SPC,  ENT,  FN1,  FN5,  FN4,  FN3,  LGUI),
+
+  [1] = KEYMAP_GRID( /* Base Colemak */
     TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
     LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
     LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
-    TRNS, FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  MINS, FN22, FN3,  LGUI),
+    ESC,  FN5,  LCTL, LALT, FN2,  SPC,  ENT,  FN1,  FN5,  FN4,  FN3,  LGUI),
 
-  [1] = KEYMAP_GRID( /* Base QWERTY */
-    TRNS, Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    TRNS,
-    TRNS, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
-    TRNS, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
+  [2] = KEYMAP_GRID( /* Space-Enter Swap */
+    TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
+    LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
+    LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
+    ESC,  FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  FN5,  FN4,  FN3,  LGUI),
+
+  [2] = KEYMAP_GRID( /* Base QWERTY */
+    TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
+    LCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
+    LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
+    ESC,  FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  FN5,  FN4,  FN3,  LGUI),
 
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
-    ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, TRNS, PGUP, LBRC, RBRC, DEL,
+    ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, FN6,  PGUP, LBRC, RBRC, DEL,
     TRNS, FN10, TRNS, TRNS, TRNS, TRNS, LEFT, DOWN, UP,   RGHT, HOME, END,
     TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, FN24, FN25, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN21, TRNS, TRNS, MUTE, VOLD, VOLU),
@@ -102,7 +114,8 @@ const uint16_t PROGMEM fn_actions[] = {
    [1] = ACTION_LAYER_TAP_TOGGLE(4), // Raise
    [2] = ACTION_LAYER_MOMENTARY(3), // Lower
 
-   [3] = ACTION_LAYER_TAP_TOGGLE(1),  // QWERTY
+   [3] = ACTION_LAYER_TAP_TOGGLE(2),  // spc-ent
+   [4] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
    [5] = ACTION_LAYER_MOMENTARY(5), // F-keys
 
   [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
@@ -126,6 +139,7 @@ const uint16_t PROGMEM fn_actions[] = {
   [28] = ACTION_MODS_KEY(MOD_LCTL, KC_X),  // cut
   [29] = ACTION_MODS_KEY(MOD_LCTL, KC_C),  // copy
   [30] = ACTION_MODS_KEY(MOD_LCTL, KC_V),  // paste
+  [6] = ACTION_MODS_KEY(MOD_LCTL, KC_L),  // ctl L
   [7] = ACTION_MODS_KEY(MOD_LCTL, KC_Q),   // quit
   [8] = ACTION_MODS_KEY(MOD_LCTL, KC_W),   // close
   [9] = ACTION_MODS_KEY(MOD_LCTL, KC_F),   // find
