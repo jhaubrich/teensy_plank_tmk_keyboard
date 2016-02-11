@@ -1,6 +1,10 @@
 // Author: Jesse Haubrich <jesse.haubrich@gmail.com>
 // http://www.keyboard-layout-editor.com/#/layouts/5a5cf55c1fb2fd767ffcb39f70fbb17f
 
+// make clean
+// make KEYMAP=jesse
+// teensy-loader-cli -w --mcu=atmega32u4 planck_lufa.hex
+
 #include "keymap_common.h"
 
 #ifndef KEYMAP_GRID
@@ -8,19 +12,19 @@
 * ,-----------------------------------------------------------------------.
 * |  `  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |     |
 * | TAB |  Q  |  W  |  F  |  P  |  G  |  J  |  L  |  U  |  Y  |  ;  | DEL |
-* | ESC | quit|close|find |     |     |     |     |PgUp |  [  |  ]  |fDEL |
+* |     |     | gui | gui | gui |     |     |     |PgUp |  [  |  ]  |fDEL |
 * |-----------------------------------------------------------------------|
 * |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
-* |  ^  |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  |  "  |
-* |     | sel |     | save|     |     | Lf  | Dn  | Up  | Rt  | home| end |
+* | alt |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  | '/^ |
+* |     |     | gui | gui | gui |     | Lf  | Dn  | Up  | Rt  | home| end |
 * |-----------------------------------------------------------------------|
-* |     |  \  |  =  |  -  |  +  |  ~  | SPC |  _  |     |     |     |     |
+* |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
 * |shift|  Z  |  X  |  C  |  V  |  B  |  K  |  M  |  ,  |  .  |  /  |Shift|
-* |     | undo| cut | copy|paste|     |     |PgDn |     |  {  |  }  |     |
+* |     | gui | gui | gui | gui |     |     |PgDn |     |  {  |  }  |     |
 * |-----------------------------------------------------------------------|
-* |     |     |     |     |     |     |     |     |     | mute| VolU| VolD|
-* |     |Fkeys|  ^  | alt | Low | ENT | SPC | Rai |     |     |qwrty| GUI |
-* |     |     |     |     |     |     |  _  |     |     | mute| VolU| VolD|
+* |     |     |     |     |     |     |     |     |     | mute| VolD| VolU|
+* | ESC | GUI | alt | ctl | low | ENT | SPC | Rai | alt | CLMK|FKeys| GUI |
+* |     |     |     |     |     |     |     |     |     | mute| VolD| VolU|
 * `-----------------------------------------------------------------------'
 */
 
@@ -41,33 +45,21 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = KEYMAP_GRID( /* Base QWERTY */
     TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
-    LCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
+    LALT, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  FN5,  LCTL, LALT, FN2,  SPC,  ENT,  FN1,  FN5,  FN4,  FN3,  LGUI),
+    ESC,  LGUI, LALT, LCTL, FN2,  ENT,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
 
   [1] = KEYMAP_GRID( /* Base Colemak */
-    TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
-    LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
-    LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  FN5,  LCTL, LALT, FN2,  SPC,  ENT,  FN1,  FN5,  FN4,  FN3,  LGUI),
-
-  [2] = KEYMAP_GRID( /* Space-Enter Swap */
-    TAB,  Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, BSPC,
-    LCTL, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
-    LSFT, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  FN5,  FN4,  FN3,  LGUI),
-
-  [2] = KEYMAP_GRID( /* Base QWERTY */
-    TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
-    LCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
-    LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  FN5,  LCTL, LALT, FN2,  ENT,  SPC,  FN1,  FN5,  FN4,  FN3,  LGUI),
+    TRNS, Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, TRNS,
+    TRNS, A,    R,    S,    T,    D,    H,    N,    E,    I,    O,    QUOT,
+    TRNS, Z,    X,    C,    V,    B,    K,    M,    COMM, DOT,  SLSH, TRNS,
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
 
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
-    ESC,  FN7,  FN8,  FN9,  TRNS, TRNS, TRNS, FN6,  PGUP, LBRC, RBRC, DEL,
-    TRNS, FN10, TRNS, TRNS, TRNS, TRNS, LEFT, DOWN, UP,   RGHT, HOME, END,
+    TRNS, TRNS, TRNS, FN6,  FN7,  TRNS, TRNS, TRNS, PGUP, LBRC, RBRC, DEL,
+    TRNS, TRNS, FN8,  FN9,  FN10, TRNS, LEFT, DOWN, UP,   RGHT, HOME, END,
     TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, FN24, FN25, TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN21, TRNS, TRNS, MUTE, VOLD, VOLU),
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, MUTE, VOLD, VOLU),
 
   [4] = KEYMAP_GRID( /* Raise / Number-sym layer
   * ,-----------------------------------------------------------------------.
@@ -75,22 +67,15 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |-----------------------------------------------------------------------|
   * |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
   * |-----------------------------------------------------------------------|
-  * |     |  \  |  =  |  -  |  +  |  ~  | SPC |  _  |     |     |     |     |
+  * |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
   * |-----------------------------------------------------------------------|
   * |     |     |     |     |     |     |     |     |     |     |     |     |
   * `-----------------------------------------------------------------------'
   */
     GRV,  FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
     TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    FN26,
-    TRNS, BSLS, EQL,  MINS, FN22, FN23, SPC,  FN21, TRNS, TRNS, TRNS, TRNS,
+    TRNS, BSLS, MINS,  EQL, FN22, FN23, TRNS, FN21, TRNS, TRNS, TRNS, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, MUTE, VOLD, VOLU),
-
-  [9] = KEYMAP_GRID( /* Symbol Layer - Depricated */
-    FN23, FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
-    TRNS, GRV,  EQL,  MINS, FN22, TRNS, TRNS, LBRC, RBRC, FN24, FN25, FN26,
-    TRNS, TRNS, TRNS, FN21, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, BSLS, TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS),
-
 
   [5] = KEYMAP_GRID( /* FKeys
 * ,-----------------------------------------------------------------------.
@@ -113,11 +98,13 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM fn_actions[] = {
    [1] = ACTION_LAYER_TAP_TOGGLE(4), // Raise
    [2] = ACTION_LAYER_MOMENTARY(3), // Lower
-
-   [3] = ACTION_LAYER_TAP_TOGGLE(2),  // spc-ent
-   [4] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
-   [5] = ACTION_LAYER_MOMENTARY(5), // F-keys
-
+   [3] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
+   [4] = ACTION_LAYER_MOMENTARY(5), // F-keys
+   [5] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
+   /* - causes ctrl-lock when using with layer modifier.
+      - when typing fast sometimes the quote donsn't register
+        and the next key is registed with ctrl. Annoying.
+    */
   [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
   [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
   [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
@@ -135,14 +122,17 @@ const uint16_t PROGMEM fn_actions[] = {
   [25] = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),
   [26] = ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),
 
-  [27] = ACTION_MODS_KEY(MOD_LCTL, KC_Z),  // undo
-  [28] = ACTION_MODS_KEY(MOD_LCTL, KC_X),  // cut
-  [29] = ACTION_MODS_KEY(MOD_LCTL, KC_C),  // copy
-  [30] = ACTION_MODS_KEY(MOD_LCTL, KC_V),  // paste
-  [6] = ACTION_MODS_KEY(MOD_LCTL, KC_L),  // ctl L
-  [7] = ACTION_MODS_KEY(MOD_LCTL, KC_Q),   // quit
-  [8] = ACTION_MODS_KEY(MOD_LCTL, KC_W),   // close
-  [9] = ACTION_MODS_KEY(MOD_LCTL, KC_F),   // find
-  [10] = ACTION_MODS_KEY(MOD_LCTL, KC_A),  // sel
+   // Awesome Lefthand
+   // [5] = ACTION_MODS_KEY(MOD_LGUI, KC_W), //
+   [6] = ACTION_MODS_KEY(MOD_LGUI, KC_E), // F
+   [7] = ACTION_MODS_KEY(MOD_LGUI, KC_R), // P
+   [8] = ACTION_MODS_KEY(MOD_LGUI, KC_S), // R
+   [9] = ACTION_MODS_KEY(MOD_LGUI, KC_D), // S
+  [10] = ACTION_MODS_KEY(MOD_LGUI, KC_F), // T
+
+  [27] = ACTION_MODS_KEY(MOD_LGUI, KC_Z), //
+  [28] = ACTION_MODS_KEY(MOD_LGUI, KC_X), //
+  [29] = ACTION_MODS_KEY(MOD_LGUI, KC_C), //
+  [30] = ACTION_MODS_KEY(MOD_LGUI, KC_V), //
 
 };
