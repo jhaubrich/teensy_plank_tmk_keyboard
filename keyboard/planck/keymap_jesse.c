@@ -15,7 +15,7 @@
 * |     |     | gui | gui | gui |     |     |     |PgUp |  [  |  ]  |fDEL |
 * |-----------------------------------------------------------------------|
 * |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
-* | alt |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  | '/^ |
+* |     |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  | '/^ |
 * |     |     | gui | gui | gui |     | Lf  | Dn  | Up  | Rt  | home| end |
 * |-----------------------------------------------------------------------|
 * |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
@@ -45,7 +45,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = KEYMAP_GRID( /* Base QWERTY */
     TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
-    LALT, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
+    TRNS, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
     ESC,  LGUI, LALT, LCTL, FN2,  ENT,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
 
