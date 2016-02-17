@@ -15,7 +15,7 @@
 * |     |     | gui | gui | gui |     |     |     |PgUp |  [  |  ]  |fDEL |
 * |-----------------------------------------------------------------------|
 * |     |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  |  |
-* |     |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  | '/^ |
+* | ctl |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  | '/^ |
 * |     |     | gui | gui | gui |     | Lf  | Dn  | Up  | Rt  | home| end |
 * |-----------------------------------------------------------------------|
 * |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
@@ -28,7 +28,7 @@
 * `-----------------------------------------------------------------------'
 */
 
-#define KEYMAP_GRID(				       			\
+#define KEYMAP_GRID(                                                    \
        K00,  K01,  K02,  K03,  K04,  K05,  K06,  K07,  K08,  K09,  K0A,  K0B, \
        K10,  K11,  K12,  K13,  K14,  K15,  K16,  K17,  K18,  K19,  K1A,  K1B, \
        K20,  K21,  K22,  K23,  K24,  K25,  K26,  K27,  K28,  K29,  K2A,  K2B, \
@@ -45,9 +45,9 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = KEYMAP_GRID( /* Base QWERTY */
     TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
-    TRNS, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
+    RCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  LGUI, LALT, LCTL, FN2,  ENT,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
+    ESC,  LGUI, LALT, LCTL, FN2,  FN5,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
 
   [1] = KEYMAP_GRID( /* Base Colemak */
     TRNS, Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, TRNS,
@@ -100,11 +100,15 @@ const uint16_t PROGMEM fn_actions[] = {
    [2] = ACTION_LAYER_MOMENTARY(3), // Lower
    [3] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
    [4] = ACTION_LAYER_MOMENTARY(5), // F-keys
-   [5] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
-   /* - causes ctrl-lock when using with layer modifier.
+   /* [5] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
+   /*
+      - causes ctrl-lock when using with layer modifier.
       - when typing fast sometimes the quote donsn't register
         and the next key is registed with ctrl. Annoying.
     */
+   // I think ENTER would be a good candidate for MODS_TAP_KEY
+   [5] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ENT),
+   
   [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
   [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
   [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
