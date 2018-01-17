@@ -20,15 +20,15 @@
 * |-----------------------------------------------------------------------|
 * |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
 * |shift|  Z  |  X  |  C  |  V  |  B  |  K  |  M  |  ,  |  .  |  /  |Shift|
-* |     | gui | gui | gui | gui |     |     |PgDn |     |  {  |  }  |     |
+* |     | gui | gui | gui | gui |     |     |PgDn |     |     |     |     |
 * |-----------------------------------------------------------------------|
-* |     |     |     |     |     |     |     |     |     | mute| VolD| VolU|
-* | ESC | GUI | alt | ctl | low | ENT | SPC | Rai | alt | CLMK|FKeys| GUI |
-* |     |     |     |     |     |     |     |     |     | mute| VolD| VolU|
+* |     |     |     |     | Lo  |     |     |  se |macro| mute| VolD| VolU|
+* | ESC | GUI | alt | ctl |  w  | ENT | SPC |  i  | alt | CLMK|FKeys| GUI |
+* |     |     |     |     |  er |     |     | Ra  |     | mute| VolD| VolU|
 * `-----------------------------------------------------------------------'
 */
 
-#define KEYMAP_GRID(                                                    \
+#define KEYMAP_GRID(                                                          \
        K00,  K01,  K02,  K03,  K04,  K05,  K06,  K07,  K08,  K09,  K0A,  K0B, \
        K10,  K11,  K12,  K13,  K14,  K15,  K16,  K17,  K18,  K19,  K1A,  K1B, \
        K20,  K21,  K22,  K23,  K24,  K25,  K26,  K27,  K28,  K29,  K2A,  K2B, \
@@ -58,7 +58,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = KEYMAP_GRID( /* Lower / Movement Layer*/
     TRNS, TRNS, TRNS, FN6,  FN7,  TRNS, TRNS, TRNS, PGUP, LBRC, RBRC, DEL,
     TRNS, TRNS, FN8,  FN9,  FN10, TRNS, LEFT, DOWN, UP,   RGHT, HOME, END,
-    TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, FN24, FN25, TRNS,
+    TRNS, FN27, FN28, FN29, FN30, BTN3, TRNS, PGDN, TRNS, TRNS, TRNS, TRNS,
     TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, MUTE, VOLD, VOLU),
 
   [4] = KEYMAP_GRID( /* Raise / Number-sym layer
@@ -69,13 +69,13 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |-----------------------------------------------------------------------|
   * |     |  \  |  =  |  -  |  +  |  ~  |     |  _  |     |     |     |     |
   * |-----------------------------------------------------------------------|
-  * |     |     |     |     |     |     |     |     |     |     |     |     |
+  * |     |     |     |     |     |     |     |     |macro|     |     |     |
   * `-----------------------------------------------------------------------'
   */
     GRV,  FN11, FN12, FN13, FN14, FN15, FN16, FN17, FN18, FN19, FN20, TRNS,
     TRNS, 1,    2,    3,    4,    5,    6,    7,    8,    9,    0,    FN26,
     TRNS, BSLS, MINS,  EQL, FN22, FN23, TRNS, FN21, TRNS, TRNS, TRNS, TRNS,
-    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, MUTE, VOLD, VOLU),
+    TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN24,  MUTE, VOLD, VOLU),
 
   [5] = KEYMAP_GRID( /* FKeys
 * ,-----------------------------------------------------------------------.
@@ -95,20 +95,40 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   };
 
+/*
+ * Macro definition
+ */
+enum macro_id {
+    TEST,
+    SUPERSECRETPASSWORD,
+};
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    keyevent_t event = record->event;
+    //uint8_t tap_count = record->tap_count;
+
+    switch (id) {
+        case TEST:
+            return (event.pressed ?
+                    MACRO( T(T), T(E), T(S), T(T), END ) :
+                    MACRO( END ) );
+        case SUPERSECRETPASSWORD:
+            return (event.pressed ?
+                    MACRO( T(S), T(U), T(P), T(E), T(P), END ) :
+                    MACRO( END ) );
+    }
+    return MACRO_NONE;
+}
+
+
 const uint16_t PROGMEM fn_actions[] = {
-   [1] = ACTION_LAYER_TAP_TOGGLE(4), // Raise
-   [2] = ACTION_LAYER_MOMENTARY(3), // Lower
-   [3] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
-   [4] = ACTION_LAYER_MOMENTARY(5), // F-keys
-   /* [5] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
-   /*
-      - causes ctrl-lock when using with layer modifier.
-      - when typing fast sometimes the quote donsn't register
-        and the next key is registed with ctrl. Annoying.
-    */
-   // I think ENTER would be a good candidate for MODS_TAP_KEY
-   [5] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ENT),
-   
+  [1] = ACTION_LAYER_TAP_TOGGLE(4), // Raise
+  [2] = ACTION_LAYER_MOMENTARY(3), // Lower
+  [3] = ACTION_LAYER_TAP_TOGGLE(1),  // Colemak
+  [4] = ACTION_LAYER_MOMENTARY(5), // F-keys
+  [5] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ENT),
+
   [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
   [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
   [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
@@ -122,8 +142,8 @@ const uint16_t PROGMEM fn_actions[] = {
   [21] = ACTION_MODS_KEY(MOD_LSFT, KC_MINS),
   [22] = ACTION_MODS_KEY(MOD_LSFT, KC_EQL),
   [23] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),
-  [24] = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
-  [25] = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),
+  [24] = ACTION_MACRO(TEST),
+  [25] = ACTION_MACRO(SUPERSECRETPASSWORD),
   [26] = ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),
 
    // Awesome Lefthand
