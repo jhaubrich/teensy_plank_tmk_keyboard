@@ -1,3 +1,6 @@
+This was forked from qmk_firmware a long time ago and exists here because I have a handwired plank with a teensy controller that this still works for.
+
+
 TMK Keyboard Firmware Collection
 ================================
 This is a keyboard firmware with some useful features for Atmel AVR controller.
