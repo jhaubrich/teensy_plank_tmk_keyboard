@@ -23,7 +23,7 @@
 * |     | gui | gui | gui | gui |     |     |PgDn |     |     |     |     |
 * |-----------------------------------------------------------------------|
 * |     |     |     |     | Lo  |     |     |  se |macro| mute| VolD| VolU|
-* | ESC | GUI | alt | ctl |  w  | ENT | SPC |  i  | alt | CLMK|FKeys| GUI |
+* | ESC | ctl | gui | alt |  w  | ENT | SPC |  i  | alt | CLMK|FKeys| GUI |
 * |     |     |     |     |  er |     |     | Ra  |     | mute| VolD| VolU|
 * `-----------------------------------------------------------------------'
 */
@@ -47,7 +47,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TAB,  Q,    W,    E,    R,    T,    Y,    U,    I,    O,    P,    BSPC,
     RCTL, A,    S,    D,    F,    G,    H,    J,    K,    L,    SCLN, QUOT,
     LSFT, Z,    X,    C,    V,    B,    N,    M,    COMM, DOT,  SLSH, LSFT,
-    ESC,  LGUI, LALT, LCTL, FN2,  FN5,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
+    ESC,  LCTL, LGUI, LALT, FN2,  FN5,  SPC,  FN1,  LALT, FN3,  FN4,  LGUI),
 
   [1] = KEYMAP_GRID( /* Base Colemak */
     TRNS, Q,    W,    F,    P,    G,    J,    L,    U,    Y,    SCLN, TRNS,
